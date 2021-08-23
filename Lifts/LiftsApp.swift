@@ -9,11 +9,24 @@ import SwiftUI
 
 @main
 struct LiftsApp: App {
+    @AppStorage("hasPreviouslyLaunched") var hasPreviouslyLaunched: Bool = false
+    
     let persistenceController = PersistenceController.shared
 
+    init() {
+        if !hasPreviouslyLaunched {
+            // Seed data on first launch
+            DataHelper.seedExercises()
+            
+            UserDefaults.standard.set(true, forKey: "hasPreviouslyLaunched")
+        } else {
+            print("App has previously launched")
+        }
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ExercisesView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

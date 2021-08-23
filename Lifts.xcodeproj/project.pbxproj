@@ -16,6 +16,8 @@
 		CA4F50AB26D44A5E00D81621 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F50AA26D44A5E00D81621 /* Entry.swift */; };
 		CA4F50AD26D44BC300D81621 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F50AC26D44BC300D81621 /* Double.swift */; };
 		CA4F50B126D44C5C00D81621 /* EntryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F50B026D44C5C00D81621 /* EntryRow.swift */; };
+		CA4F50B326D44E7200D81621 /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F50B226D44E7200D81621 /* DataHelper.swift */; };
+		CA4F50B526D4568200D81621 /* ExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F50B426D4568200D81621 /* ExercisesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		CA4F50AA26D44A5E00D81621 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		CA4F50AC26D44BC300D81621 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		CA4F50B026D44C5C00D81621 /* EntryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryRow.swift; sourceTree = "<group>"; };
+		CA4F50B226D44E7200D81621 /* DataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
+		CA4F50B426D4568200D81621 /* ExercisesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,9 +65,11 @@
 		CA4F509626D437D900D81621 /* Lifts */ = {
 			isa = PBXGroup;
 			children = (
+				CA4F50B226D44E7200D81621 /* DataHelper.swift */,
 				CA4F50B026D44C5C00D81621 /* EntryRow.swift */,
 				CA4F509726D437D900D81621 /* LiftsApp.swift */,
 				CA4F509926D437D900D81621 /* ContentView.swift */,
+				CA4F50B426D4568200D81621 /* ExercisesView.swift */,
 				CA4F509B26D437DB00D81621 /* Assets.xcassets */,
 				CA4F50A026D437DB00D81621 /* Persistence.swift */,
 				CA4F50A226D437DB00D81621 /* Lifts.xcdatamodeld */,
@@ -168,11 +174,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA4F50B526D4568200D81621 /* ExercisesView.swift in Sources */,
 				CA4F50AB26D44A5E00D81621 /* Entry.swift in Sources */,
 				CA4F50A426D437DB00D81621 /* Lifts.xcdatamodeld in Sources */,
 				CA4F50B126D44C5C00D81621 /* EntryRow.swift in Sources */,
 				CA4F50A126D437DB00D81621 /* Persistence.swift in Sources */,
 				CA4F509A26D437D900D81621 /* ContentView.swift in Sources */,
+				CA4F50B326D44E7200D81621 /* DataHelper.swift in Sources */,
 				CA4F50AD26D44BC300D81621 /* Double.swift in Sources */,
 				CA4F509826D437D900D81621 /* LiftsApp.swift in Sources */,
 			);
