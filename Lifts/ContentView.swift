@@ -17,6 +17,8 @@ struct ContentView: View {
     private var entries: FetchedResults<Entry>
     
     @State private var searchText = ""
+    
+    @State var showingAddEntrySheet = false
 
     var body: some View {
         NavigationView {
@@ -26,9 +28,22 @@ struct ContentView: View {
                 }
                 .onDelete(perform: deleteItems)
             }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        showingAddEntrySheet.toggle()
+                    }) {
+                        Text("Add Entry")
+                    }
+                }
+            }
+            .sheet(isPresented: $showingAddEntrySheet) {
+                ExercisesView(showingAddEntrySheet: $showingAddEntrySheet)
+                    .environment(\.managedObjectContext, viewContext)
+            }
             .navigationTitle("Lifts")
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
         }
-        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
     }
 
     private func addItem() {

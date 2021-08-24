@@ -16,23 +16,39 @@ struct ExercisesView: View {
         animation: .default)
     private var exercises: FetchedResults<Exercise>
     
+    @Binding var showingAddEntrySheet: Bool
+    
     @State private var searchText = ""
     
     var body: some View {
         NavigationView {
             List {
                 ForEach(exercises) { exercise in
-                    Text("\(exercise.name!)")
+                    NavigationLink(
+                        destination: AddSetsView(showingAddEntrySheet: $showingAddEntrySheet, exercise: exercise),
+                        label: {
+                            Text("\(exercise.name!)")
+                        }
+                    )
                 }
             }
-            .navigationTitle("Exercises")
+            .navigationTitle("Choose exercise")
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        showingAddEntrySheet.toggle()
+                    }) {
+                        Text("Cancel")
+                    }
+                }
+            }
         }
     }
 }
 
-struct ExercisesView_Previews: PreviewProvider {
-    static var previews: some View {
-        ExercisesView()
-    }
-}
+//struct ExercisesView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ExercisesView()
+//    }
+//}

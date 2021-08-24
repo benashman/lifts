@@ -26,7 +26,7 @@ struct LiftsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ExercisesView()
+            ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
