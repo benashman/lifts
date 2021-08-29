@@ -19,7 +19,7 @@ struct FilteredExerciseList: View {
         fetchRequest = FetchRequest<Exercise>(
             entity: Exercise.entity(),
             sortDescriptors: [],
-            predicate: NSPredicate(format: "name BEGINSWITH[c] %@", filter))
+            predicate: NSPredicate(format: "name CONTAINS[cd] %@", filter))
         
         _showingAddEntrySheet = showingAddEntrySheet
     }
