@@ -9,27 +9,17 @@ import SwiftUI
 import CoreData
 
 struct ExercisesView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Exercise.name, ascending: true)],
-        animation: .default)
-    private var exercises: FetchedResults<Exercise>
-    
     @Binding var showingAddEntrySheet: Bool
     
     @State private var searchText = ""
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(exercises) { exercise in
-                    NavigationLink(
-                        destination: AddSetsView(showingAddEntrySheet: $showingAddEntrySheet, exercise: exercise),
-                        label: {
-                            Text("\(exercise.name!)")
-                        }
-                    )
+            Group {
+                if searchText.isEmpty {
+                    AllExercisesList(showingAddEntrySheet: $showingAddEntrySheet)
+                } else {
+                    FilteredExerciseList(filter: searchText, showingAddEntrySheet: $showingAddEntrySheet)
                 }
             }
             .navigationTitle("Choose exercise")
