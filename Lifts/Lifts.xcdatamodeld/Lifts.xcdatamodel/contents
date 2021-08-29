@@ -3,10 +3,12 @@
     <entity name="Entry" representedClassName="Entry" syncable="YES" codeGenerationType="class">
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="exercise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Exercise" inverseName="entries" inverseEntity="Exercise"/>
         <relationship name="sets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Set" inverseName="entry" inverseEntity="Set"/>
     </entity>
     <entity name="Exercise" representedClassName="Exercise" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="entries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entry" inverseName="exercise" inverseEntity="Entry"/>
     </entity>
     <entity name="Set" representedClassName="Set" syncable="YES" codeGenerationType="class">
         <attribute name="reps" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
@@ -14,8 +16,8 @@
         <relationship name="entry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Entry" inverseName="sets" inverseEntity="Entry"/>
     </entity>
     <elements>
-        <element name="Entry" positionX="-63" positionY="-9" width="128" height="74"/>
+        <element name="Entry" positionX="-63" positionY="-9" width="128" height="89"/>
         <element name="Set" positionX="-54" positionY="0" width="128" height="74"/>
-        <element name="Exercise" positionX="-36" positionY="27" width="128" height="44"/>
+        <element name="Exercise" positionX="-36" positionY="27" width="128" height="59"/>
     </elements>
 </model>

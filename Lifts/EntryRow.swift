@@ -11,10 +11,14 @@ struct EntryRow: View {
     let entry: Entry
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
+            Text(entry.exercise?.name ?? "No exercise name")
             Text("Entry at \(entry.timestamp!, formatter: itemFormatter)")
+                .font(.caption)
             Text(entry.setsDescription)
+                .font(.caption)
             Text(entry.notesContent)
+                .font(.caption)
         }
     }
 }
