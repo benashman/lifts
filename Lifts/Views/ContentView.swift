@@ -26,28 +26,12 @@ struct ContentView: View {
         formatter.dateStyle = .short
         return formatter
     }()
-    
-    struct SectionHeader: View {
-        let date: Date!
-        
-        var dateLabel: String {
-            let dateFormatter = DateFormatter()
-            dateFormatter.locale = Locale.autoupdatingCurrent
-            dateFormatter.doesRelativeDateFormatting = true
-            dateFormatter.dateStyle = .long
-            return dateFormatter.string(from: date)
-        }
-        
-        var body: some View {
-            Text(dateLabel)
-        }
-    }
 
     var body: some View {
         NavigationView {
             List {
                 ForEach(groupedEntries(entries).indices, id: \.self) { section in
-                    Section(header: SectionHeader(date:
+                    Section(header: DateSectionHeader(date:
                         groupedEntries(entries)[section][0].timestamp!)) {
                         ForEach(groupedEntries(entries)[section], id: \.self) { entry in
                             EntryRow(entry: entry)
