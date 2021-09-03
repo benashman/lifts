@@ -24,7 +24,7 @@ struct AddSetsView: View {
             newEntry.exercise = exercise
             
             for _ in 0..<3 {
-                let newSet = Set(context: viewContext)
+                let newSet = EntrySet(context: viewContext)
                 newSet.weight = Double.random(in: 2.5..<500)
                 newSet.reps = Int64(Int.random(in: 1..<12))
                 newSet.entry = newEntry
