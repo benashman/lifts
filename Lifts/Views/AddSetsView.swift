@@ -38,7 +38,13 @@ struct AddSetsView: View {
             Section(header: Text("Sets")) {
                 ForEach(sets.indices, id: \.self) { index in
                     SetEditorRow(set: sets[index], index: index, selectedSetIndex: $selectedSetIndex)
-                }
+                }.onDelete(perform: deleteSets)
+            }
+            
+            Button(action: {
+                addSet()
+            }) {
+                Label("Add Set", systemImage: "plus")
             }
             
             Section(header: Text("Notes")) {
@@ -72,6 +78,15 @@ struct AddSetsView: View {
             
             sets.append(firstSet)
         }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    saveEntry()
+                }) {
+                    Text("Save")
+                }
+            }
+        }
         .navigationTitle("\(exercise.name ?? "Unknown Exercise")")
 
         
@@ -102,6 +117,49 @@ struct AddSetsView: View {
 //
 //            showingAddEntrySheet.toggle()
 //        }
+    }
+    
+    func addSet() {
+        let newSet = EntrySet(context: viewContext)
+        
+        if let previousSet = sets.last {
+            newSet.weight = previousSet.weight
+            newSet.reps = previousSet.reps
+        }
+        
+        sets.append(newSet)
+    }
+    
+    func deleteSets(offsets: IndexSet) {
+        withAnimation {
+            offsets.forEach { i in
+                sets.remove(at: i)
+                
+                // Clear selection if selected is deleted
+                // TODO: make sure this doesn't cause any crashes
+                // TODO: make this a more robust function
+                if selectedSetIndex == i {
+                    selectedSetIndex = nil
+                }
+            }
+        }
+    }
+    
+    func saveEntry() {
+        let newEntry = Entry(context: viewContext)
+        newEntry.timestamp = Date()
+        newEntry.exercise = exercise
+        newEntry.notes = notes
+        newEntry.sets = NSSet(array: sets)
+
+        do {
+            try viewContext.save()
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
+
+        showingAddEntrySheet.toggle()
     }
 }
 
