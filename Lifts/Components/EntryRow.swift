@@ -15,12 +15,15 @@ struct EntryRow: View {
             label: {
                 VStack(alignment: .leading) {
                     Text(entry.exercise?.name ?? "No exercise name")
-                    Text("Entry at \(entry.timestamp!, formatter: itemFormatter)")
-                        .font(.caption)
+                        .font(.title3)
                     Text(entry.setsDescription)
                         .font(.caption)
-                    Text(entry.notesContent)
-                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    if !entry.notesContent.isEmpty {
+                        Text(entry.notesContent)
+                            .font(.caption2)
+                            .foregroundColor(.secondary)
+                    }
                 }
             }
         )
