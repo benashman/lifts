@@ -9,9 +9,13 @@ import SwiftUI
 import CoreData
 
 struct ExercisesView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
     @Binding var showingAddEntrySheet: Bool
     
     @State private var searchText = ""
+    
+    @State var showingAddNewExerciseSheet = false
     
     var body: some View {
         NavigationView {
@@ -32,6 +36,18 @@ struct ExercisesView: View {
                         Text("Cancel")
                     }
                 }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        showingAddNewExerciseSheet.toggle()
+                    }) {
+                        Label("Add Exercise", systemImage: "plus")
+                    }
+                }
+            }
+            .sheet(isPresented: $showingAddNewExerciseSheet) {
+                AddNewExerciseView(showingAddNewExerciseView: $showingAddNewExerciseSheet)
+                    .environment(\.managedObjectContext, viewContext)
             }
         }
     }

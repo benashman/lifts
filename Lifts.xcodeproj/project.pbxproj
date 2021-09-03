@@ -25,6 +25,7 @@
 		CA4F50BF26E2CA3C00D81621 /* DateSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F50BE26E2CA3C00D81621 /* DateSectionHeader.swift */; };
 		CA4F50C526E2CEFD00D81621 /* SetEditorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F50C426E2CEFD00D81621 /* SetEditorRow.swift */; };
 		CA4F50C726E2CF7600D81621 /* SetEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F50C626E2CF7500D81621 /* SetEditor.swift */; };
+		CA4F50C926E2DBB900D81621 /* AddNewExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F50C826E2DBB900D81621 /* AddNewExerciseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		CA4F50BE26E2CA3C00D81621 /* DateSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSectionHeader.swift; sourceTree = "<group>"; };
 		CA4F50C426E2CEFD00D81621 /* SetEditorRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetEditorRow.swift; sourceTree = "<group>"; };
 		CA4F50C626E2CF7500D81621 /* SetEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetEditor.swift; sourceTree = "<group>"; };
+		CA4F50C826E2DBB900D81621 /* AddNewExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewExerciseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				CA4F50BC26E2BC2800D81621 /* EntryDetailView.swift */,
 				CA4F50B426D4568200D81621 /* ExercisesView.swift */,
 				CA4F50B626D47BCF00D81621 /* AddSetsView.swift */,
+				CA4F50C826E2DBB900D81621 /* AddNewExerciseView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 			files = (
 				CA4F50B526D4568200D81621 /* ExercisesView.swift in Sources */,
 				CA4F50AB26D44A5E00D81621 /* Entry.swift in Sources */,
+				CA4F50C926E2DBB900D81621 /* AddNewExerciseView.swift in Sources */,
 				CA4F50A426D437DB00D81621 /* Lifts.xcdatamodeld in Sources */,
 				CA4F50B126D44C5C00D81621 /* EntryRow.swift in Sources */,
 				CA4F50A126D437DB00D81621 /* Persistence.swift in Sources */,
