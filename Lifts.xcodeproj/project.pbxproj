@@ -76,10 +76,10 @@
 			isa = PBXGroup;
 			children = (
 				CA4F509726D437D900D81621 /* LiftsApp.swift */,
-				CA4F50C126E2CAD800D81621 /* Helpers */,
 				CA4F50C226E2CAE700D81621 /* Components */,
 				CA4F50C026E2CAB300D81621 /* Views */,
 				CA4F50C326E2CB0900D81621 /* Data */,
+				CA4F50C126E2CAD800D81621 /* Helpers */,
 				CA4F50AF26D44BEA00D81621 /* Extensions */,
 				CA4F50AE26D44BDF00D81621 /* Models */,
 				CA4F509B26D437DB00D81621 /* Assets.xcassets */,
