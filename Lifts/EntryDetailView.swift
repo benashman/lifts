@@ -24,8 +24,28 @@ struct EntryDetailView: View {
     }
     
     var body: some View {
-        Text("\(relatedEntries.count) entries")
-            .navigationTitle(entry.exerciseName)
+        List {
+            Section(header: Text("Sets")) {
+                ForEach(Array(entry.sets as? Set<EntrySet> ?? []), id: \.self) { set in
+                    HStack {
+                        Text("\(set.weight.cleanValue)lb")
+                        Text("✕")
+                        Text("\(set.reps)")
+                    }
+                }
+            }
+            
+            Section(header: Text("Notes")) {
+                Text(entry.notesContent)
+            }
+            
+            Section(header: Text("Previous logs")) {
+                ForEach(relatedEntries) { entry in
+                    EntryRow(entry: entry)
+                }
+            }
+        }
+        .navigationTitle(entry.exerciseName)
     }
 }
 
