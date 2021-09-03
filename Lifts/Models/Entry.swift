@@ -26,4 +26,8 @@ extension Entry {
     var notesContent: String {
         return notes ?? "No notes"
     }
+    
+    var exerciseName: String {
+        return exercise?.name ?? "Unknown Exercise"
+    }
 }
