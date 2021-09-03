@@ -48,7 +48,7 @@ struct AddSetsView: View {
             }
             
             Section(header: Text("Notes")) {
-                TextField("Notes", text: $notes) // TODO: use a TextEditor here eventually.
+                TextEditor(text: $notes) // TODO: Strip newlines. 
             }
             
             Section(header: Text("Editor")) {
