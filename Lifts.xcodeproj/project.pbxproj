@@ -23,6 +23,8 @@
 		CA4F50BB26DC4E1700D81621 /* AllExercisesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F50BA26DC4E1700D81621 /* AllExercisesList.swift */; };
 		CA4F50BD26E2BC2800D81621 /* EntryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F50BC26E2BC2800D81621 /* EntryDetailView.swift */; };
 		CA4F50BF26E2CA3C00D81621 /* DateSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F50BE26E2CA3C00D81621 /* DateSectionHeader.swift */; };
+		CA4F50C526E2CEFD00D81621 /* SetEditorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F50C426E2CEFD00D81621 /* SetEditorRow.swift */; };
+		CA4F50C726E2CF7600D81621 /* SetEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F50C626E2CF7500D81621 /* SetEditor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		CA4F50BA26DC4E1700D81621 /* AllExercisesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllExercisesList.swift; sourceTree = "<group>"; };
 		CA4F50BC26E2BC2800D81621 /* EntryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailView.swift; sourceTree = "<group>"; };
 		CA4F50BE26E2CA3C00D81621 /* DateSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSectionHeader.swift; sourceTree = "<group>"; };
+		CA4F50C426E2CEFD00D81621 /* SetEditorRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetEditorRow.swift; sourceTree = "<group>"; };
+		CA4F50C626E2CF7500D81621 /* SetEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetEditor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +142,8 @@
 				CA4F50BA26DC4E1700D81621 /* AllExercisesList.swift */,
 				CA4F50B826DC4A8700D81621 /* FilteredExerciseList.swift */,
 				CA4F50BE26E2CA3C00D81621 /* DateSectionHeader.swift */,
+				CA4F50C426E2CEFD00D81621 /* SetEditorRow.swift */,
+				CA4F50C626E2CF7500D81621 /* SetEditor.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -226,6 +232,7 @@
 				CA4F50A426D437DB00D81621 /* Lifts.xcdatamodeld in Sources */,
 				CA4F50B126D44C5C00D81621 /* EntryRow.swift in Sources */,
 				CA4F50A126D437DB00D81621 /* Persistence.swift in Sources */,
+				CA4F50C526E2CEFD00D81621 /* SetEditorRow.swift in Sources */,
 				CA4F50B726D47BCF00D81621 /* AddSetsView.swift in Sources */,
 				CA4F50BF26E2CA3C00D81621 /* DateSectionHeader.swift in Sources */,
 				CA4F509A26D437D900D81621 /* ContentView.swift in Sources */,
@@ -233,6 +240,7 @@
 				CA4F50B926DC4A8800D81621 /* FilteredExerciseList.swift in Sources */,
 				CA4F50BB26DC4E1700D81621 /* AllExercisesList.swift in Sources */,
 				CA4F50BD26E2BC2800D81621 /* EntryDetailView.swift in Sources */,
+				CA4F50C726E2CF7600D81621 /* SetEditor.swift in Sources */,
 				CA4F50AD26D44BC300D81621 /* Double.swift in Sources */,
 				CA4F509826D437D900D81621 /* LiftsApp.swift in Sources */,
 			);

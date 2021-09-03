@@ -31,7 +31,7 @@ struct FilteredExerciseList: View {
         List {
             ForEach(exercises) { exercise in
                 NavigationLink(
-                    destination: AddSetsView(showingAddEntrySheet: $showingAddEntrySheet, exercise: exercise),
+                    destination: AddSetsView(exercise: exercise, showingAddEntrySheet: $showingAddEntrySheet),
                     label: {
                         Text("\(exercise.name!)")
                     }
