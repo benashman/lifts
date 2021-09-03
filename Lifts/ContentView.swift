@@ -52,6 +52,9 @@ struct ContentView: View {
                         ForEach(groupedEntries(entries)[section], id: \.self) { entry in
                             EntryRow(entry: entry)
                         }
+                        .onDelete { offsets in
+                            deleteItems(offsets: offsets, section: section)
+                        }
                     }
                 }
             }
@@ -101,9 +104,9 @@ struct ContentView: View {
         }
     }
 
-    private func deleteItems(offsets: IndexSet) {
+    private func deleteItems(offsets: IndexSet, section: Int) {
         withAnimation {
-            offsets.map { entries[$0] }.forEach(viewContext.delete)
+            offsets.map { groupedEntries(entries)[section][$0] }.forEach(viewContext.delete)
 
             do {
                 try viewContext.save()
