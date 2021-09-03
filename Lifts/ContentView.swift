@@ -58,6 +58,7 @@ struct ContentView: View {
                     }
                 }
             }
+            .listStyle(InsetGroupedListStyle())
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
