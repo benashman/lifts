@@ -58,12 +58,6 @@ struct ContentView: View {
                     }
                 }
             }
-//            List {
-//                ForEach(entries) { entry in
-//                    EntryRow(entry: entry)
-//                }
-//                .onDelete(perform: deleteItems)
-//            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
