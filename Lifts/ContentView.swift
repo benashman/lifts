@@ -19,15 +19,48 @@ struct ContentView: View {
     @State private var searchText = ""
     
     @State var showingAddEntrySheet = false
+    
+    
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        return formatter
+    }()
+    
+    struct SectionHeader: View {
+        let date: Date!
+        
+        var dateLabel: String {
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale.autoupdatingCurrent
+            dateFormatter.doesRelativeDateFormatting = true
+            dateFormatter.dateStyle = .long
+            return dateFormatter.string(from: date)
+        }
+        
+        var body: some View {
+            Text(dateLabel)
+        }
+    }
 
     var body: some View {
         NavigationView {
             List {
-                ForEach(entries) { entry in
-                    EntryRow(entry: entry)
+                ForEach(groupedEntries(entries).indices, id: \.self) { section in
+                    Section(header: SectionHeader(date:
+                        groupedEntries(entries)[section][0].timestamp!)) {
+                        ForEach(groupedEntries(entries)[section], id: \.self) { entry in
+                            EntryRow(entry: entry)
+                        }
+                    }
                 }
-                .onDelete(perform: deleteItems)
             }
+//            List {
+//                ForEach(entries) { entry in
+//                    EntryRow(entry: entry)
+//                }
+//                .onDelete(perform: deleteItems)
+//            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
@@ -45,7 +78,13 @@ struct ContentView: View {
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
         }
     }
-
+    
+    private func groupedEntries(_ result: FetchedResults<Entry>) -> [[Entry]] {
+        return Dictionary(grouping: result) { (element: Entry) in
+            dateFormatter.string(from: element.timestamp!)
+        }.values.sorted() { $0[0].timestamp! > $1[0].timestamp! }
+    }
+    
     private func addItem() {
         withAnimation {
             let newEntry = Entry(context: viewContext)
