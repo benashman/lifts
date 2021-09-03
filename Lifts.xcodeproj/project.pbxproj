@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CA4F509826D437D900D81621 /* LiftsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F509726D437D900D81621 /* LiftsApp.swift */; };
-		CA4F509A26D437D900D81621 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F509926D437D900D81621 /* ContentView.swift */; };
+		CA4F509A26D437D900D81621 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F509926D437D900D81621 /* HomeView.swift */; };
 		CA4F509C26D437DB00D81621 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA4F509B26D437DB00D81621 /* Assets.xcassets */; };
 		CA4F509F26D437DB00D81621 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA4F509E26D437DB00D81621 /* Preview Assets.xcassets */; };
 		CA4F50A126D437DB00D81621 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F50A026D437DB00D81621 /* Persistence.swift */; };
@@ -31,7 +31,7 @@
 /* Begin PBXFileReference section */
 		CA4F509426D437D900D81621 /* Lifts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lifts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA4F509726D437D900D81621 /* LiftsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiftsApp.swift; sourceTree = "<group>"; };
-		CA4F509926D437D900D81621 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CA4F509926D437D900D81621 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CA4F509B26D437DB00D81621 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA4F509E26D437DB00D81621 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CA4F50A026D437DB00D81621 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 		CA4F50C026E2CAB300D81621 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CA4F509926D437D900D81621 /* ContentView.swift */,
+				CA4F509926D437D900D81621 /* HomeView.swift */,
 				CA4F50BC26E2BC2800D81621 /* EntryDetailView.swift */,
 				CA4F50B426D4568200D81621 /* ExercisesView.swift */,
 				CA4F50B626D47BCF00D81621 /* AddSetsView.swift */,
@@ -239,7 +239,7 @@
 				CA4F50C526E2CEFD00D81621 /* SetEditorRow.swift in Sources */,
 				CA4F50B726D47BCF00D81621 /* AddSetsView.swift in Sources */,
 				CA4F50BF26E2CA3C00D81621 /* DateSectionHeader.swift in Sources */,
-				CA4F509A26D437D900D81621 /* ContentView.swift in Sources */,
+				CA4F509A26D437D900D81621 /* HomeView.swift in Sources */,
 				CA4F50B326D44E7200D81621 /* DataHelper.swift in Sources */,
 				CA4F50B926DC4A8800D81621 /* FilteredExerciseList.swift in Sources */,
 				CA4F50BB26DC4E1700D81621 /* AllExercisesList.swift in Sources */,
