@@ -29,11 +29,11 @@ struct EntryRow: View {
                 }
             }
         )
-//            .padding(.top, 8)
-//            .padding(.bottom, 8)
-            .padding(20)
-            .background(Color(UIColor.secondarySystemBackground))
-            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .buttonStyle(PlainButtonStyle())
+        .listRowSeparator(.hidden)
+//        .padding(20)
+//        .background(Color(UIColor.secondarySystemBackground))
+//        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
     }
 }
 
