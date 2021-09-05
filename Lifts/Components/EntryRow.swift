@@ -31,9 +31,9 @@ struct EntryRow: View {
         )
         .buttonStyle(PlainButtonStyle())
         .listRowSeparator(.hidden)
-//        .padding(20)
-//        .background(Color(UIColor.secondarySystemBackground))
-//        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .padding(20)
+        .background(Color(UIColor.secondarySystemBackground))
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
     }
 }
 
