@@ -15,7 +15,7 @@ extension Entry {
         if let sets = self.sets {
             for s in sets {
                 let entrySet = s as! EntrySet
-                let description = "\(entrySet.weight.cleanValue) x \(entrySet.reps)"
+                let description = "\(entrySet.weight.cleanValue)x\(entrySet.reps)"
                 setDescriptions.append(description)
             }
         }

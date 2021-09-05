@@ -15,16 +15,20 @@ struct EntryRow: View {
             label: {
                 VStack(alignment: .leading) {
                     Text(entry.exercise?.name ?? "No exercise name")
-                        .font(.title3)
+                        .font(.system(size: 20.0, weight: .bold, design: .rounded))
+                        .padding(.bottom, -4)
                     Text(entry.setsDescription)
-                        .font(.caption)
+                        .font(.system(size: 14.0, weight: .bold, design: .default))
                         .foregroundColor(.secondary)
                     if !entry.notesContent.isEmpty {
                         Text(entry.notesContent)
-                            .font(.caption2)
+                            .font(.system(size: 12.0, weight: .regular, design: .default))
                             .foregroundColor(.secondary)
+                            .padding(.top, -6)
                     }
                 }
+                .padding(.top, 8)
+                .padding(.bottom, 8)
             }
         )
     }

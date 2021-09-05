@@ -24,7 +24,7 @@ struct DateSectionHeader: View {
             .foregroundColor(.primary)
             .textCase(nil)
             .padding(.leading, -20)
-            .padding(.bottom, 4)
+            .padding(.bottom, -3)
     }
 }
 
