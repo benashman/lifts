@@ -20,6 +20,11 @@ struct DateSectionHeader: View {
     
     var body: some View {
         Text(dateLabel)
+            .font(.system(size: 24.0, weight: .bold, design: .default))
+            .foregroundColor(.primary)
+            .textCase(nil)
+            .padding(.leading, -20)
+            .padding(.bottom, 4)
     }
 }
 

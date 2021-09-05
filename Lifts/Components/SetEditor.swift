@@ -31,6 +31,12 @@ struct SetEditor: View {
                 }
                 .buttonStyle(PlainButtonStyle())
             }
+            
+            Button(action: {
+                print("Dismissing editor")
+            }) {
+                Text("Dismiss Editor")
+            }
         }
     }
 }

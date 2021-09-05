@@ -20,7 +20,6 @@ struct HomeView: View {
     
     @State var showingAddEntrySheet = false
     
-    
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
