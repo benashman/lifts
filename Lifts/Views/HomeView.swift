@@ -28,36 +28,48 @@ struct HomeView: View {
 
     var body: some View {
         NavigationView {
-            List {
-                ForEach(groupedEntries(entries).indices, id: \.self) { section in
-                    Section(header: DateSectionHeader(date:
-                        groupedEntries(entries)[section][0].timestamp!)) {
-                        ForEach(groupedEntries(entries)[section], id: \.self) { entry in
-                            EntryRow(entry: entry)
-                                .buttonStyle(CustomButtonStyle())
-                        }
-                        .onDelete { offsets in
-                            deleteItems(offsets: offsets, section: section)
+            ZStack(alignment: .bottomTrailing) {
+                List {
+                    ForEach(groupedEntries(entries).indices, id: \.self) { section in
+                        Section(header: DateSectionHeader(date:
+                            groupedEntries(entries)[section][0].timestamp!)) {
+                            ForEach(groupedEntries(entries)[section], id: \.self) { entry in
+                                EntryRow(entry: entry)
+                                    .buttonStyle(CustomButtonStyle())
+                            }
+                            .onDelete { offsets in
+                                deleteItems(offsets: offsets, section: section)
+                            }
                         }
                     }
                 }
-            }
-            .buttonStyle(CustomButtonStyle())
-            .listStyle(PlainListStyle())
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        showingAddEntrySheet.toggle()
-                    }) {
-                        Text("Add Entry")
-                    }
+                .buttonStyle(CustomButtonStyle())
+                .navigationBarTitleDisplayMode(.inline)
+                .listStyle(PlainListStyle())
+//                .toolbar {
+//                    ToolbarItem(placement: .navigationBarTrailing) {
+//                        Button(action: {
+//                            showingAddEntrySheet.toggle()
+//                        }) {
+//                            Text("Add Entry")
+//                        }
+//                    }
+//                }
+                .sheet(isPresented: $showingAddEntrySheet) {
+                    ExercisesView(showingAddEntrySheet: $showingAddEntrySheet)
+                        .environment(\.managedObjectContext, viewContext)
                 }
+                .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+                
+                Button(action: {
+                    showingAddEntrySheet.toggle()
+                }, label: {
+                    Image(systemName: "plus")
+                        .font(.system(size: 24, weight: .heavy, design: .rounded))
+                })
+                .buttonStyle(AddButtonStyle())
+                .padding(.trailing, 32)
             }
-            .sheet(isPresented: $showingAddEntrySheet) {
-                ExercisesView(showingAddEntrySheet: $showingAddEntrySheet)
-                    .environment(\.managedObjectContext, viewContext)
-            }
-            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
         }
     }
     
@@ -98,6 +110,21 @@ struct HomeView: View {
         }
     }
 }
+
+struct AddButtonStyle: ButtonStyle {
+    @Environment(\.isEnabled) private var isEnabled
+    
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .frame(width: 64, height: 64)
+            .foregroundColor(Color.black)
+            .background(Color.white)
+            .clipShape(Circle())
+            .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
+            .animation(.spring(), value: configuration.isPressed)
+    }
+}
+
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
