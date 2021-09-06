@@ -34,6 +34,7 @@ struct HomeView: View {
                         groupedEntries(entries)[section][0].timestamp!)) {
                         ForEach(groupedEntries(entries)[section], id: \.self) { entry in
                             EntryRow(entry: entry)
+                                .buttonStyle(CustomButtonStyle())
                         }
                         .onDelete { offsets in
                             deleteItems(offsets: offsets, section: section)
@@ -41,6 +42,7 @@ struct HomeView: View {
                     }
                 }
             }
+            .buttonStyle(CustomButtonStyle())
             .listStyle(PlainListStyle())
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -55,7 +57,6 @@ struct HomeView: View {
                 ExercisesView(showingAddEntrySheet: $showingAddEntrySheet)
                     .environment(\.managedObjectContext, viewContext)
             }
-            .navigationTitle("Lifts")
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
         }
     }

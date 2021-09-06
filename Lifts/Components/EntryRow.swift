@@ -29,11 +29,19 @@ struct EntryRow: View {
                 }
             }
         )
-        .buttonStyle(PlainButtonStyle())
+        .buttonStyle(CustomButtonStyle())
         .listRowSeparator(.hidden)
         .padding(20)
         .background(Color(UIColor.secondarySystemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+    }
+}
+
+struct CustomButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 0.5 : 1)
+            .background(Color.blue)
     }
 }
 
