@@ -46,6 +46,7 @@ struct EntryDetailView: View {
             }
         }
         .navigationTitle(entry.exerciseName)
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 

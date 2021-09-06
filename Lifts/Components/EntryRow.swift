@@ -18,7 +18,7 @@ struct EntryRow: View {
                         .font(.system(size: 20.0, weight: .bold, design: .rounded))
                         .padding(.bottom, -4)
                     Text(entry.setsDescription)
-                        .font(.system(size: 14.0, weight: .bold, design: .default))
+                        .font(.system(size: 14.0, weight: .semibold, design: .default))
                         .foregroundColor(.secondary)
                     if !entry.notesContent.isEmpty {
                         Text(entry.notesContent)
