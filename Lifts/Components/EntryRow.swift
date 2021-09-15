@@ -14,17 +14,22 @@ struct EntryRow: View {
         NavigationLink(destination: EntryDetailView(entry: entry),
             label: {
                 VStack(alignment: .leading) {
-                    Text(entry.exercise?.name ?? "No exercise name")
-                        .font(.system(size: 20.0, weight: .bold, design: .rounded))
-                        .padding(.bottom, -4)
-                    Text(entry.setsDescription)
-                        .font(.system(size: 14.0, weight: .semibold, design: .default))
-                        .foregroundColor(.secondary)
-                    if !entry.notesContent.isEmpty {
-                        Text(entry.notesContent)
-                            .font(.system(size: 12.0, weight: .regular, design: .default))
+                    HStack {
+                        Text(entry.exercise?.name ?? "No exercise name")
+                            .font(.system(size: 20.0, weight: .bold, design: .rounded))
+                            .padding(.bottom, -4)
+                        Text(entry.setsDescription)
+                            .font(.system(size: 14.0, weight: .semibold, design: .default))
                             .foregroundColor(.secondary)
-                            .padding(.top, -6)
+                        if !entry.notesContent.isEmpty {
+                            Text(entry.notesContent)
+                                .font(.system(size: 12.0, weight: .regular, design: .default))
+                                .foregroundColor(.secondary)
+                                .padding(.top, -6)
+                        }
+                        
+                        // Fill full with of container
+                        Spacer()
                     }
                 }
             }

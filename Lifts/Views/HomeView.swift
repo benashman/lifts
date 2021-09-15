@@ -29,23 +29,34 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottomTrailing) {
-                List {
-                    ForEach(groupedEntries(entries).indices, id: \.self) { section in
-                        Section(header: DateSectionHeader(date:
-                            groupedEntries(entries)[section][0].timestamp!)) {
-                            ForEach(groupedEntries(entries)[section], id: \.self) { entry in
-                                EntryRow(entry: entry)
-                                    .buttonStyle(CustomButtonStyle())
-                            }
-                            .onDelete { offsets in
-                                deleteItems(offsets: offsets, section: section)
+                ScrollView {
+                    LazyVStack {
+                        ForEach(groupedEntries(entries).indices, id: \.self) { section in
+                            Section(header: DateSectionHeader(date: groupedEntries(entries)[section][0].timestamp!)) {
+                                ForEach(groupedEntries(entries)[section], id: \.self) { entry in
+                                    EntryRow(entry: entry)
+                                }
                             }
                         }
                     }
                 }
-                .buttonStyle(CustomButtonStyle())
-                .navigationBarTitleDisplayMode(.inline)
-                .listStyle(PlainListStyle())
+//                List {
+//                    ForEach(groupedEntries(entries).indices, id: \.self) { section in
+//                        Section(header: DateSectionHeader(date:
+//                            groupedEntries(entries)[section][0].timestamp!)) {
+//                            ForEach(groupedEntries(entries)[section], id: \.self) { entry in
+//                                EntryRow(entry: entry)
+//                                    .buttonStyle(CustomButtonStyle())
+//                            }
+//                            .onDelete { offsets in
+//                                deleteItems(offsets: offsets, section: section)
+//                            }
+//                        }
+//                    }
+//                }
+//                .buttonStyle(CustomButtonStyle())
+//                .navigationBarTitleDisplayMode(.inline)
+//                .listStyle(PlainListStyle())
 //                .toolbar {
 //                    ToolbarItem(placement: .navigationBarTrailing) {
 //                        Button(action: {
