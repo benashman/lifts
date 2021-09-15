@@ -117,9 +117,9 @@ struct AddButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(width: 64, height: 64)
-            .foregroundColor(Color.black)
-            .background(Color.white)
-            .clipShape(Circle())
+            .foregroundColor(Color.white)
+            .background(Color(red: 254/255, green: 54/255, blue: 94/244, opacity: 1.0))
+            .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
             .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
             .animation(.spring(), value: configuration.isPressed)
     }
