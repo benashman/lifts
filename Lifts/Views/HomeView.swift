@@ -39,6 +39,7 @@ struct HomeView: View {
                             }
                         }
                     }
+                    .padding(EdgeInsets(top: 0, leading: 16.0, bottom: 0, trailing: 16.0))
                 }
 //                List {
 //                    ForEach(groupedEntries(entries).indices, id: \.self) { section in
