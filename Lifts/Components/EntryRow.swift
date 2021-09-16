@@ -13,8 +13,8 @@ struct EntryRow: View {
     var body: some View {
         NavigationLink(destination: EntryDetailView(entry: entry),
             label: {
-                VStack(alignment: .leading) {
-                    HStack {
+                HStack {
+                    VStack(alignment: .leading) {
                         Text(entry.exercise?.name ?? "No exercise name")
                             .font(.system(size: 20.0, weight: .bold, design: .rounded))
                             .padding(.bottom, -4)
@@ -27,10 +27,10 @@ struct EntryRow: View {
                                 .foregroundColor(.secondary)
                                 .padding(.top, -6)
                         }
-                        
-                        // Fill full with of container
-                        Spacer()
                     }
+                    
+                    // Fill full with of container
+                    Spacer()
                 }
             }
         )
