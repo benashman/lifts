@@ -149,7 +149,7 @@ struct AddButtonStyle: ButtonStyle {
         configuration.label
             .frame(width: 64, height: 64)
             .foregroundColor(Color.black)
-            .background(Color(red: 166/255, green: 254/255, blue: 7/255, opacity: 1.0))
+            .background(Color.accentColor)
 //            .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
             .cornerRadius(32.0)
             .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
