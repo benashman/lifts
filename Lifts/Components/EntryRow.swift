@@ -18,7 +18,7 @@ struct EntryRow: View {
                         Text(entry.exercise?.name ?? "No exercise name")
                             .font(.system(size: 20.0, weight: .bold, design: .rounded))
                             .padding(.bottom, -4)
-                            .foregroundColor(.primary)
+                            .foregroundColor(.accentColor)
                         Text(entry.setsDescription)
                             .font(.system(size: 14.0, weight: .semibold, design: .default))
                             .foregroundColor(.secondary)
