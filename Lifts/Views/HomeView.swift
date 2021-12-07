@@ -164,6 +164,7 @@ struct HomeView_Previews: PreviewProvider {
     }
 }
 
+// TODO: Use this as inspo for the delete behavior we actually want
 struct Delete: ViewModifier {
     
     let action: () -> Void
