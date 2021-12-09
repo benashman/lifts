@@ -11,26 +11,32 @@ struct EntryRow: View {
     let entry: Entry
     
     var body: some View {
-        NavigationLink(destination: EntryDetailView(entry: entry),
-            label: {
-                VStack(alignment: .leading) {
-                    Text(entry.exercise?.name ?? "No exercise name")
-                        .font(.system(size: 20.0, weight: .bold, design: .rounded))
-                        .padding(.bottom, -4)
-                    Text(entry.setsDescription)
-                        .font(.system(size: 14.0, weight: .semibold, design: .default))
-                        .foregroundColor(.secondary)
-                    if !entry.notesContent.isEmpty {
-                        Text(entry.notesContent)
-                            .font(.system(size: 12.0, weight: .regular, design: .default))
-                            .foregroundColor(.secondary)
-                            .padding(.top, -6)
+        VStack {
+            NavigationLink(destination: EntryDetailView(entry: entry),
+                label: {
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(entry.exercise?.name ?? "No exercise name")
+                                .font(.system(size: 20.0, weight: .bold, design: .rounded))
+                                .padding(.bottom, 2)
+                                .foregroundColor(.accentColor)
+                            Text(entry.setsDescription)
+                                .font(.system(size: 14.0, weight: .medium, design: .default))
+                                .foregroundColor(Color(hex: 0xEBEBF5))
+                            if !entry.notesContent.isEmpty {
+                                Text(entry.notesContent)
+                                    .font(.system(size: 12.0, weight: .regular, design: .default))
+                                    .foregroundColor(Color(hex: 0xEBEBF5, alpha: 0.6))
+                                    .padding(.top, -3)
+                            }
+                        }
+                        
+                        // Fill full with of container
+                        Spacer()
                     }
                 }
-            }
-        )
-        .buttonStyle(CustomButtonStyle())
-        .listRowSeparator(.hidden)
+            )
+        }
         .padding(20)
         .background(Color(UIColor.secondarySystemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))

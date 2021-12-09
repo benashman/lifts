@@ -29,23 +29,38 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottomTrailing) {
-                List {
-                    ForEach(groupedEntries(entries).indices, id: \.self) { section in
-                        Section(header: DateSectionHeader(date:
-                            groupedEntries(entries)[section][0].timestamp!)) {
-                            ForEach(groupedEntries(entries)[section], id: \.self) { entry in
-                                EntryRow(entry: entry)
-                                    .buttonStyle(CustomButtonStyle())
-                            }
-                            .onDelete { offsets in
-                                deleteItems(offsets: offsets, section: section)
+                ScrollView {
+                    LazyVStack(alignment: .leading) {
+                        ForEach(groupedEntries(entries).indices, id: \.self) { section in
+                            Section(header: DateSectionHeader(date: groupedEntries(entries)[section][0].timestamp!)) {
+                                ForEach(groupedEntries(entries)[section], id: \.self) { entry in
+                                    EntryRow(entry: entry)
+//                                        .onDelete {
+//                                            print("delete")
+//                                        }
+                                }
                             }
                         }
                     }
+                    .padding(EdgeInsets(top: 0, leading: 16.0, bottom: 0, trailing: 16.0))
                 }
-                .buttonStyle(CustomButtonStyle())
-                .navigationBarTitleDisplayMode(.inline)
-                .listStyle(PlainListStyle())
+//                List {
+//                    ForEach(groupedEntries(entries).indices, id: \.self) { section in
+//                        Section(header: DateSectionHeader(date:
+//                            groupedEntries(entries)[section][0].timestamp!)) {
+//                            ForEach(groupedEntries(entries)[section], id: \.self) { entry in
+//                                EntryRow(entry: entry)
+//                                    .buttonStyle(CustomButtonStyle())
+//                            }
+//                            .onDelete { offsets in
+//                                deleteItems(offsets: offsets, section: section)
+//                            }
+//                        }
+//                    }
+//                }
+//                .buttonStyle(CustomButtonStyle())
+//                .navigationBarTitleDisplayMode(.inline)
+//                .listStyle(PlainListStyle())
 //                .toolbar {
 //                    ToolbarItem(placement: .navigationBarTrailing) {
 //                        Button(action: {
@@ -60,6 +75,7 @@ struct HomeView: View {
                         .environment(\.managedObjectContext, viewContext)
                 }
                 .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+                .navigationBarTitle("", displayMode: .inline)
                 
                 Button(action: {
                     showingAddEntrySheet.toggle()
@@ -94,6 +110,22 @@ struct HomeView: View {
             }
         }
     }
+    
+    private func deleteEntry(_ entry: Entry) {
+        withAnimation {
+            print("deleting entry: ")
+            print(entry)
+            
+            viewContext.delete(entry)
+            
+            do {
+                try viewContext.save()
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
+    }
 
     private func deleteItems(offsets: IndexSet, section: Int) {
         withAnimation {
@@ -117,9 +149,10 @@ struct AddButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(width: 64, height: 64)
-            .foregroundColor(Color.white)
-            .background(Color(red: 254/255, green: 54/255, blue: 94/244, opacity: 1.0))
-            .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+            .foregroundColor(Color.black)
+            .background(Color.accentColor)
+//            .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+            .cornerRadius(32.0)
             .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
             .animation(.spring(), value: configuration.isPressed)
     }
@@ -130,4 +163,95 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
+}
+
+// TODO: Use this as inspo for the delete behavior we actually want
+struct Delete: ViewModifier {
+    
+    let action: () -> Void
+    
+    @State var offset: CGSize = .zero
+    @State var initialOffset: CGSize = .zero
+    @State var contentWidth: CGFloat = 0.0
+    @State var willDeleteIfReleased = false
+   
+    func body(content: Content) -> some View {
+        content
+            .background(
+                GeometryReader { geometry in
+                    ZStack {
+                        Rectangle()
+                            .foregroundColor(.red)
+                        Image(systemName: "trash")
+                            .foregroundColor(.white)
+                            .font(.title2.bold())
+                            .layoutPriority(-1)
+                    }.frame(width: -offset.width)
+                    .offset(x: geometry.size.width)
+                    .onAppear {
+                        contentWidth = geometry.size.width
+                    }
+                    .gesture(
+                        TapGesture()
+                            .onEnded {
+                                delete()
+                            }
+                    )
+                }
+            )
+            .offset(x: offset.width, y: 0)
+            .gesture (
+                DragGesture()
+                    .onChanged { gesture in
+                        if gesture.translation.width + initialOffset.width <= 0 {
+                            self.offset.width = gesture.translation.width + initialOffset.width
+                        }
+                        if self.offset.width < -deletionDistance && !willDeleteIfReleased {
+                            hapticFeedback()
+                            willDeleteIfReleased.toggle()
+                        } else if offset.width > -deletionDistance && willDeleteIfReleased {
+                            hapticFeedback()
+                            willDeleteIfReleased.toggle()
+                        }
+                    }
+                    .onEnded { _ in
+                        if offset.width < -deletionDistance {
+                            delete()
+                        } else if offset.width < -halfDeletionDistance {
+                            offset.width = -tappableDeletionWidth
+                            initialOffset.width = -tappableDeletionWidth
+                        } else {
+                            offset = .zero
+                            initialOffset = .zero
+                        }
+                    }
+            )
+            .animation(.interactiveSpring())
+    }
+    
+    private func delete() {
+        offset.width = -contentWidth
+        action()
+    }
+    
+    private func hapticFeedback() {
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
+    }
+    
+    //MARK: Constants
+    
+    let deletionDistance = CGFloat(200)
+    let halfDeletionDistance = CGFloat(50)
+    let tappableDeletionWidth = CGFloat(100)
+    
+    
+}
+
+extension View {
+    
+    func onDelete(perform action: @escaping () -> Void) -> some View {
+        self.modifier(Delete(action: action))
+    }
+    
 }
