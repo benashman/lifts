@@ -75,6 +75,7 @@ struct HomeView: View {
                         .environment(\.managedObjectContext, viewContext)
                 }
                 .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+                .navigationBarTitle("", displayMode: .inline)
                 
                 Button(action: {
                     showingAddEntrySheet.toggle()
