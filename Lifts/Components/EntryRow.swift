@@ -21,12 +21,12 @@ struct EntryRow: View {
                                 .padding(.bottom, -4)
                                 .foregroundColor(.accentColor)
                             Text(entry.setsDescription)
-                                .font(.system(size: 14.0, weight: .semibold, design: .default))
-                                .foregroundColor(.secondary)
+                                .font(.system(size: 14.0, weight: .medium, design: .default))
+                                .foregroundColor(Color(hex: 0xEBEBF5))
                             if !entry.notesContent.isEmpty {
                                 Text(entry.notesContent)
                                     .font(.system(size: 12.0, weight: .regular, design: .default))
-                                    .foregroundColor(.secondary)
+                                    .foregroundColor(Color(hex: 0xEBEBF5, alpha: 0.6))
                                     .padding(.top, -6)
                             }
                         }
