@@ -23,6 +23,8 @@ struct DateSectionHeader: View {
             .font(.system(size: 34.0, weight: .bold, design: .default))
             .foregroundColor(.primary)
             .textCase(nil)
+            .padding([.bottom], 10)
+            .padding([.top], 32)
     }
 }
 

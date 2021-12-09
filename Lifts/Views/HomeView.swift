@@ -35,9 +35,9 @@ struct HomeView: View {
                             Section(header: DateSectionHeader(date: groupedEntries(entries)[section][0].timestamp!)) {
                                 ForEach(groupedEntries(entries)[section], id: \.self) { entry in
                                     EntryRow(entry: entry)
-                                        .onDelete(perform: {
-                                            deleteEntry(entry)
-                                        })
+//                                        .onDelete {
+//                                            print("delete")
+//                                        }
                                 }
                             }
                         }
