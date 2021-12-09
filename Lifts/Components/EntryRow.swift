@@ -18,7 +18,7 @@ struct EntryRow: View {
                         VStack(alignment: .leading) {
                             Text(entry.exercise?.name ?? "No exercise name")
                                 .font(.system(size: 20.0, weight: .bold, design: .rounded))
-                                .padding(.bottom, -4)
+                                .padding(.bottom, 2)
                                 .foregroundColor(.accentColor)
                             Text(entry.setsDescription)
                                 .font(.system(size: 14.0, weight: .medium, design: .default))
@@ -27,7 +27,7 @@ struct EntryRow: View {
                                 Text(entry.notesContent)
                                     .font(.system(size: 12.0, weight: .regular, design: .default))
                                     .foregroundColor(Color(hex: 0xEBEBF5, alpha: 0.6))
-                                    .padding(.top, -6)
+                                    .padding(.top, -3)
                             }
                         }
                         
