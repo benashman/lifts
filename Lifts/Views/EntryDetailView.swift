@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EntryDetailView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.presentationMode) var presentation
 
     let entry: Entry
 
@@ -34,6 +35,7 @@ struct EntryDetailView: View {
                     }
                 }
             }
+            .listStyle(InsetGroupedListStyle())
             
             Section(header: Text("Notes")) {
                 Text(entry.notesContent)
@@ -47,6 +49,30 @@ struct EntryDetailView: View {
         }
         .navigationTitle(entry.exerciseName)
         .navigationBarTitleDisplayMode(.large)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    deleteEntry()
+                }) {
+                    Label("Delete entry", systemImage: "trash")
+                }
+            }
+        }
+    }
+    
+    private func deleteEntry() {
+        print("Deleting entry")
+        
+        viewContext.delete(entry)
+        
+        do {
+            try viewContext.save()
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
+        
+        self.presentation.wrappedValue.dismiss()
     }
 }
 

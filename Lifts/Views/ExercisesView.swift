@@ -27,6 +27,7 @@ struct ExercisesView: View {
                 }
             }
             .navigationTitle("Choose exercise")
+            .navigationBarTitleDisplayMode(.large)
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
