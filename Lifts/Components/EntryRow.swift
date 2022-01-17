@@ -10,6 +10,8 @@ import SwiftUI
 struct EntryRow: View {
     let entry: Entry
     
+    @State var viewState = CGSize.zero
+    
     var body: some View {
         VStack {
             NavigationLink(destination: EntryDetailView(entry: entry),
@@ -37,6 +39,18 @@ struct EntryRow: View {
                 }
             )
         }
+        .offset(x: viewState.width, y: .zero)
+        .highPriorityGesture(
+            DragGesture()
+                .onChanged { value in
+                    viewState = value.translation
+                }
+                .onEnded { value in
+                    withAnimation(.spring()) {
+                        viewState = .zero
+                    }
+                }
+        )
         .padding(20)
         .background(Color(UIColor.secondarySystemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
