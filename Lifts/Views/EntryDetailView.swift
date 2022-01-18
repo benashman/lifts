@@ -52,7 +52,8 @@ struct EntryDetailView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
-                    deleteEntry()
+                    DataHelper.deleteEntry(entry)
+                    self.presentation.wrappedValue.dismiss()
                 }) {
                     Label("Delete entry", systemImage: "trash")
                 }

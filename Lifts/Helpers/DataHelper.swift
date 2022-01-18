@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import SwiftUI
 
 struct DataHelper {
     
@@ -34,6 +35,22 @@ struct DataHelper {
         } catch {
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
+    }
+    
+    static func deleteEntry(_ entry: Entry) {
+        withAnimation {
+            print("deleting entry: ")
+            print(entry)
+            
+            self.viewContext.delete(entry)
+            
+            do {
+                try self.viewContext.save()
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
         }
     }
 }

@@ -13,47 +13,72 @@ struct EntryRow: View {
     @State var viewState = CGSize.zero
     
     var body: some View {
-        VStack {
-            NavigationLink(destination: EntryDetailView(entry: entry),
-                label: {
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(entry.exercise?.name ?? "No exercise name")
-                                .font(.system(size: 20.0, weight: .bold, design: .rounded))
-                                .padding(.bottom, 2)
-                                .foregroundColor(.accentColor)
-                            Text(entry.setsDescription)
-                                .font(.system(size: 14.0, weight: .medium, design: .default))
-                                .foregroundColor(Color(hex: 0xEBEBF5))
-                            if !entry.notesContent.isEmpty {
-                                Text(entry.notesContent)
-                                    .font(.system(size: 12.0, weight: .regular, design: .default))
-                                    .foregroundColor(Color(hex: 0xEBEBF5, alpha: 0.6))
-                                    .padding(.top, -3)
+        ZStack {
+            Rectangle()
+                .padding()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .foregroundColor(Color(UIColor.red))
+                .background(Color(UIColor.red))
+                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+            HStack {
+                Spacer()
+                Button(action: {
+                    DataHelper.deleteEntry(entry)
+                    print("Deleting entry \(entry.exerciseName)")
+                }, label: {
+                    Image(systemName: "trash.fill")
+                        .font(.system(size: 24, weight: .heavy, design: .rounded))
+                        .foregroundColor(Color(UIColor.white))
+                })
+                    .padding(.trailing, 32)
+            }
+            VStack {
+                NavigationLink(destination: EntryDetailView(entry: entry),
+                    label: {
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(entry.exercise?.name ?? "No exercise name")
+                                    .font(.system(size: 20.0, weight: .bold, design: .rounded))
+                                    .padding(.bottom, 2)
+                                    .foregroundColor(.accentColor)
+                                Text(entry.setsDescription)
+                                    .font(.system(size: 14.0, weight: .medium, design: .default))
+                                    .foregroundColor(Color(hex: 0xEBEBF5))
+                                if !entry.notesContent.isEmpty {
+                                    Text(entry.notesContent)
+                                        .font(.system(size: 12.0, weight: .regular, design: .default))
+                                        .foregroundColor(Color(hex: 0xEBEBF5, alpha: 0.6))
+                                        .padding(.top, -3)
+                                }
+                            }
+                            
+                            // Fill full with of container
+                            Spacer()
+                        }
+                    }
+                )
+            }
+            .padding(20)
+            .background(Color(UIColor.secondarySystemBackground))
+            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+            .offset(x: viewState.width, y: .zero)
+            .highPriorityGesture(
+                DragGesture()
+                    .onChanged { value in
+                        viewState = value.translation
+                        print(viewState.width)
+                    }
+                    .onEnded { value in
+                        withAnimation(.spring()) {
+                            if viewState.width < -50 {
+                                viewState = CGSize(width: -100, height: .zero)
+                            } else {
+                                viewState = .zero
                             }
                         }
-                        
-                        // Fill full with of container
-                        Spacer()
                     }
-                }
             )
         }
-        .offset(x: viewState.width, y: .zero)
-        .highPriorityGesture(
-            DragGesture()
-                .onChanged { value in
-                    viewState = value.translation
-                }
-                .onEnded { value in
-                    withAnimation(.spring()) {
-                        viewState = .zero
-                    }
-                }
-        )
-        .padding(20)
-        .background(Color(UIColor.secondarySystemBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
     }
 }
 
