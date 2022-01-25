@@ -64,20 +64,24 @@ struct EntryRow: View {
             .offset(x: min(0, viewState.width), y: .zero)
             .highPriorityGesture(
                 DragGesture()
-                    .onChanged { value in
-                        viewState = value.translation
-                        print(viewState.width)
-                    }
-                    .onEnded { value in
-                        withAnimation(.spring()) {
-                            if viewState.width < -50 {
-                                viewState = CGSize(width: -100, height: .zero)
-                            } else {
-                                viewState = .zero
-                            }
-                        }
-                    }
+                    .onChanged(onChanged(value:))
+                    .onEnded(onEnded(value:))
             )
+        }
+    }
+    
+    func onChanged(value: DragGesture.Value) {
+        viewState = value.translation
+        print(viewState.width)
+    }
+    
+    func onEnded(value: DragGesture.Value) {
+        withAnimation(.spring()) {
+            if viewState.width < -50 {
+                viewState = CGSize(width: -100, height: .zero)
+            } else {
+                viewState = .zero
+            }
         }
     }
 }
