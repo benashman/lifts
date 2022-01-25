@@ -61,7 +61,7 @@ struct EntryRow: View {
             .padding(20)
             .background(Color(UIColor.secondarySystemBackground))
             .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-            .offset(x: viewState.width, y: .zero)
+            .offset(x: min(0, viewState.width), y: .zero)
             .highPriorityGesture(
                 DragGesture()
                     .onChanged { value in
