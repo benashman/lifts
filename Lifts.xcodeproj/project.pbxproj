@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0148F05027A6171200866C38 /* SwipeToDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0148F04F27A6171200866C38 /* SwipeToDelete.swift */; };
 		01DA2BAB2762875E00B92BA2 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DA2BAA2762875E00B92BA2 /* Color.swift */; };
 		CA4F509826D437D900D81621 /* LiftsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F509726D437D900D81621 /* LiftsApp.swift */; };
 		CA4F509A26D437D900D81621 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F509926D437D900D81621 /* HomeView.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0148F04F27A6171200866C38 /* SwipeToDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeToDelete.swift; sourceTree = "<group>"; };
 		01DA2BAA2762875E00B92BA2 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		CA4F509426D437D900D81621 /* Lifts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lifts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA4F509726D437D900D81621 /* LiftsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiftsApp.swift; sourceTree = "<group>"; };
@@ -64,6 +66,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0148F04E27A6170000866C38 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				0148F04F27A6171200866C38 /* SwipeToDelete.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
 		CA4F508B26D437D900D81621 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +93,7 @@
 		CA4F509626D437D900D81621 /* Lifts */ = {
 			isa = PBXGroup;
 			children = (
+				0148F04E27A6170000866C38 /* Modifiers */,
 				CA4F509726D437D900D81621 /* LiftsApp.swift */,
 				CA4F50C226E2CAE700D81621 /* Components */,
 				CA4F50C026E2CAB300D81621 /* Views */,
@@ -246,6 +257,7 @@
 				CA4F50B326D44E7200D81621 /* DataHelper.swift in Sources */,
 				CA4F50B926DC4A8800D81621 /* FilteredExerciseList.swift in Sources */,
 				CA4F50BB26DC4E1700D81621 /* AllExercisesList.swift in Sources */,
+				0148F05027A6171200866C38 /* SwipeToDelete.swift in Sources */,
 				CA4F50BD26E2BC2800D81621 /* EntryDetailView.swift in Sources */,
 				CA4F50C726E2CF7600D81621 /* SetEditor.swift in Sources */,
 				CA4F50AD26D44BC300D81621 /* Double.swift in Sources */,
